@@ -10,4 +10,6 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="item_name_req" />
+    <string name="set_title">Set Title</string>
+    <string name="write_your_note_here">Write your note here</string>
 </resources>

@@ -22,7 +22,7 @@ class NoteListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentNoteListBinding.inflate(inflater, container, false)
         return binding.root

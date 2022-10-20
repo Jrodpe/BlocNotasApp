@@ -10,10 +10,11 @@
         android:id="@+id/note_title_label"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:hint="Set Title"
+        android:hint="@string/set_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/noteTitle"
@@ -25,7 +26,7 @@
         android:id="@+id/note_text_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Write your note here"
+        android:hint="@string/write_your_note_here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/note_title_label" >
