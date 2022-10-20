@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.blocnotas.databinding.FragmentNewNoteBinding
 
@@ -14,6 +15,7 @@ import com.example.blocnotas.databinding.FragmentNewNoteBinding
 class NewNoteFragment : Fragment() {
 
     private var _binding: FragmentNewNoteBinding? = null
+    private val viewModel: NoteViewModel by viewModels()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -32,9 +34,10 @@ class NewNoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+        binding.sendNoteButton.setOnClickListener {
+            viewModel.createNote(noteTitle = binding.noteTitle.text.toString(), noteText = binding.noteText.text.toString())
         }
+
     }
 
     override fun onDestroyView() {
