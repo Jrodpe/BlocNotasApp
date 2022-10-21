@@ -1,10 +1,13 @@
 package com.example.blocnotas
 
+import android.content.ClipData
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.blocnotas.database.NoteDao
 import com.example.blocnotas.database.Notes
+import kotlinx.coroutines.launch
 
 class NoteViewModel(private val noteDao: NoteDao): ViewModel() {
 

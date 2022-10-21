@@ -1,7 +1,7 @@
 package com.example.blocnotas.database
 
-import androidx.room.Dao
-import androidx.room.Query
+import android.content.ClipData
+import androidx.room.*
 
 @Dao
 interface NoteDao {
