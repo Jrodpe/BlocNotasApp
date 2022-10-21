@@ -44,4 +44,5 @@ class NewNoteFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
