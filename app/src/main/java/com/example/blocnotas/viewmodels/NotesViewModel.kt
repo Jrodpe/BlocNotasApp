@@ -7,9 +7,9 @@ import com.example.blocnotas.database.NoteDao
 import com.example.blocnotas.database.Notes
 
 
-class NotesViewModel(private val noteDao: NoteDao): ViewModel() {
+class NotesViewModel(private val noteDao: NoteDao) : ViewModel() {
 
-    fun createNote (noteTitle: String, noteText: String){
+    fun createNote(noteTitle: String, noteText: String) {
         Log.d("newNote", "noteTitle= $noteTitle noteText= $noteText")
     }
 
