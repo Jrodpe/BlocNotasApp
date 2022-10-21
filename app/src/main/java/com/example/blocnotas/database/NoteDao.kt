@@ -1,11 +1,10 @@
 package com.example.blocnotas.database
 
-import android.content.ClipData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Query
 
 @Dao
 interface NoteDao {
-
-    @Query("SELECT * FROM notes ORDER BY note_title ASC")
+    @Query("SELECT * FROM Notes ORDER BY note_title ASC")
     fun getAll(): List<Notes>
 }

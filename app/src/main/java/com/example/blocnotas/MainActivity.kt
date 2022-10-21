@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        //Configuración de la flecha de la toolbar para que vuelva hacia atrás
         binding.toolbar.setNavigationOnClickListener{navController.popBackStack()}
 
     }
