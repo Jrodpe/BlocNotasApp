@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.blocnotas.databinding.FragmentNewNoteBinding
+import com.example.blocnotas.viewmodels.NotesViewModel
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -15,7 +15,7 @@ import com.example.blocnotas.databinding.FragmentNewNoteBinding
 class NewNoteFragment : Fragment() {
 
     private var _binding: FragmentNewNoteBinding? = null
-    private val viewModel: NoteViewModel by viewModels()
+    private val viewModel: NotesViewModel by viewModels()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
