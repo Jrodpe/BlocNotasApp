@@ -3,8 +3,10 @@ package com.example.blocnotas.viewmodels
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.blocnotas.database.NoteDao
 import com.example.blocnotas.database.Notes
+import kotlinx.coroutines.launch
 
 
 class NotesViewModel(private val noteDao: NoteDao) : ViewModel() {
@@ -13,7 +15,45 @@ class NotesViewModel(private val noteDao: NoteDao) : ViewModel() {
         Log.d("newNote", "noteTitle= $noteTitle noteText= $noteText")
     }
 
-    fun allSchedule(): List<Notes> = noteDao.getAll()
+    //TODO INSERTAR LA NOTA EN LA BASE DE DATOS
+    /**
+     * Inserts the new Item into database.
+     */
+    fun addNewNote(noteTitle: String, noteText: String) {
+        Log.d("newNote", "noteTitle= $noteTitle noteText= $noteText")
+        val newNote = getNewNoteEntry(noteTitle, noteText)
+        insertNote(newNote)
+    }
+
+    /**
+     * Returns an instance of the [Item] entity class with the item info entered by the user.
+     * This will be used to add a new entry to the Inventory database.
+     */
+    private fun getNewNoteEntry(noteTitle: String, noteText: String): Notes {
+        return Notes(
+            noteTitle = noteTitle,
+            noteText = noteText
+        )
+
+    }
+
+    /**
+     * Launching a new coroutine to insert an item in a non-blocking way
+     */
+    private fun insertNote(notes: Notes) {
+        viewModelScope.launch {
+            noteDao.insert(notes)
+        }
+    }
+
+    fun allNotes(): List<Notes> = noteDao.getAll()
+
+    fun isEntryValid(noteTitle: String, noteText: String): Boolean{
+        if (noteTitle.isBlank() || noteText.isBlank()){
+            return false
+        }
+        return true
+    }
 }
 
 class NotesViewModelFactory(
