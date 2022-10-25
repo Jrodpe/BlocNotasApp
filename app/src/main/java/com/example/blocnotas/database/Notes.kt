@@ -5,9 +5,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity (tableName = "Notes")
 data class Notes (
-    @PrimaryKey val id: Int,
-    @NonNull @ColumnInfo(name = "note_title") val noteTitle: String,
-    @NonNull @ColumnInfo(name = "note_text") val noteText: String
+    @PrimaryKey
+    @ColumnInfo(name = "note_title") val noteTitle: String,
+    @ColumnInfo(name = "note_text") val noteText: String
         )

@@ -1,12 +1,14 @@
 package com.example.blocnotas
 
+import android.content.ClipData
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.blocnotas.database.Notes
 import com.example.blocnotas.databinding.FragmentNewNoteBinding
 import com.example.blocnotas.viewmodels.NotesViewModel
 import com.example.blocnotas.viewmodels.NotesViewModelFactory
@@ -19,9 +21,9 @@ class NewNoteFragment : Fragment() {
     private var _binding: FragmentNewNoteBinding? = null
     private val viewModel: NotesViewModel by activityViewModels{
     NotesViewModelFactory(
-    (activity?.application as NotesApplication).database.noteDao()
-    )
+    (activity?.application as NotesApplication).database.noteDao())
 }
+    lateinit var note: Notes
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -37,11 +39,31 @@ class NewNoteFragment : Fragment() {
 
     }
 
+    /**
+     * Returns true if the EditTexts are not empty
+     */
+    private fun isEntryValid(): Boolean{
+        return viewModel.isEntryValid(
+            binding.noteTitle.text.toString(),
+            binding.noteText.text.toString())
+    }
+
+    private fun addNewNote(){
+        if(isEntryValid()){
+            viewModel.addNewNote(
+                binding.noteTitle.text.toString(),
+                binding.noteText.text.toString()
+            )
+            // val action = NewNoteFragment//AÑADIR LA ACCION QUE NO ME DEJA PORQUE HAY QUE MODIFICAR EL GRADLE
+            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.sendNoteButton.setOnClickListener {
-            viewModel.createNote(noteTitle = binding.noteTitle.text.toString(), noteText = binding.noteText.text.toString())
+            addNewNote()
         }
 
     }
