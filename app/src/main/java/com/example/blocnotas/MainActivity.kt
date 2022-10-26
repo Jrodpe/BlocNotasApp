@@ -1,11 +1,17 @@
 package com.example.blocnotas
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.recyclerview.widget.RecyclerView
+import com.example.blocnotas.adapter.NotesAdapter
+import com.example.blocnotas.data.notasPrueba
 import com.example.blocnotas.databinding.ActivityMainBinding
+import com.example.blocnotas.databinding.FragmentNoteListBinding
+import javax.sql.DataSource
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.setNavigationOnClickListener{navController.popBackStack()}
 
     }
-    }
+}
 
 /* override fun onCreateOptionsMenu(menu: Menu): Boolean {
      // Inflate the menu; this adds items to the action bar if it is present.
