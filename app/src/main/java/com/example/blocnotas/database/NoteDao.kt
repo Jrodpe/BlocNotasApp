@@ -6,11 +6,12 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDao {
     @Query("SELECT * FROM Notes ORDER BY note_title ASC")
-    fun getAll(): List<Notes>
+    fun getAll(): Flow<List<Notes>>
 
     @Insert (onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(notes: Notes)

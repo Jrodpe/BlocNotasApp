@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.blocnotas.database.NoteDao
 import com.example.blocnotas.database.Notes
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 
@@ -46,7 +47,7 @@ class NotesViewModel(private val noteDao: NoteDao) : ViewModel() {
         }
     }
 
-    fun allNotes(): List<Notes> = noteDao.getAll()
+    fun allNotes(): Flow<List<Notes>> = noteDao.getAll()
 
     fun isEntryValid(noteTitle: String, noteText: String): Boolean{
         if (noteTitle.isBlank() || noteText.isBlank()){
