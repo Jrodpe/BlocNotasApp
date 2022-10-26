@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.blocnotas.R
 import com.example.blocnotas.database.Notes
 
-class NotesAdapter(private val noteList: List<Notes>): RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
+class NotesAdapter(): RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
+
+    private var noteList: List<Notes> = listOf()
 
     class NotesViewHolder(private val view: View): RecyclerView.ViewHolder(view){
         val tituloNotas: TextView = view.findViewById(R.id.titulo)
@@ -36,5 +38,10 @@ class NotesAdapter(private val noteList: List<Notes>): RecyclerView.Adapter<Note
 
     /**La función [getItemCount] debe mostrar el tamaño del conjunto de datos*/
     override fun getItemCount() = noteList.size
+
+    fun submitList(notes: List<Notes>){
+        noteList = notes
+        notifyDataSetChanged() //avisamos al adapter de cambios para repintarlo
+    }
 
 }

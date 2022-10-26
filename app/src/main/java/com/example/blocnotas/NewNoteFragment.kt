@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
+import com.example.blocnotas.adapter.NotesAdapter
 import com.example.blocnotas.database.Notes
 import com.example.blocnotas.databinding.FragmentNewNoteBinding
 import com.example.blocnotas.viewmodels.NotesViewModel
 import com.example.blocnotas.viewmodels.NotesViewModelFactory
+import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -54,7 +57,6 @@ class NewNoteFragment : Fragment() {
                 binding.noteTitle.text.toString(),
                 binding.noteText.text.toString()
             )
-            // val action = NewNoteFragment//AÑADIR LA ACCION QUE NO ME DEJA PORQUE HAY QUE MODIFICAR EL GRADLE
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
     }
@@ -65,6 +67,8 @@ class NewNoteFragment : Fragment() {
         binding.sendNoteButton.setOnClickListener {
             addNewNote()
         }
+
+
 
     }
 
