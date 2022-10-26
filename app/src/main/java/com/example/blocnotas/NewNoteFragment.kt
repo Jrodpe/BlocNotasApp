@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
-import com.example.blocnotas.adapter.NotesAdapter
 import com.example.blocnotas.database.Notes
 import com.example.blocnotas.databinding.FragmentNewNoteBinding
 import com.example.blocnotas.viewmodels.NotesViewModel

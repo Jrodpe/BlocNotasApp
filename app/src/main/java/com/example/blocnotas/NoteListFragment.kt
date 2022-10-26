@@ -11,7 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.blocnotas.adapter.NotesAdapter
+import com.example.blocnotas.adapter.NotesListAdapter
 import com.example.blocnotas.data.notasPrueba
 import com.example.blocnotas.database.Notes
 import com.example.blocnotas.databinding.FragmentNoteListBinding
@@ -24,7 +24,7 @@ import kotlinx.coroutines.launch
  */
 class NoteListFragment : Fragment() {
 
-    private val adapter = NotesAdapter()
+    private val adapter = NotesListAdapter()
     private var _binding: FragmentNoteListBinding? = null
 
     // This property is only valid between onCreateView and
