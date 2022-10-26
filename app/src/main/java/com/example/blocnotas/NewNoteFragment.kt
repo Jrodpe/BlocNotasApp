@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.blocnotas.database.Notes
 import com.example.blocnotas.databinding.FragmentNewNoteBinding
 import com.example.blocnotas.viewmodels.NotesViewModel
 import com.example.blocnotas.viewmodels.NotesViewModelFactory
@@ -23,7 +22,6 @@ class NewNoteFragment : Fragment() {
             (activity?.application as NotesApplication).database.noteDao()
         )
     }
-    lateinit var note: Notes
 
     // This property is only valid between onCreateView and
     // onDestroyView.

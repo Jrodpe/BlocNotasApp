@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
 import com.example.blocnotas.adapter.NotesListAdapter
+import com.example.blocnotas.database.Notes
 import com.example.blocnotas.databinding.FragmentNoteListBinding
 import com.example.blocnotas.viewmodels.NotesViewModel
 import com.example.blocnotas.viewmodels.NotesViewModelFactory
@@ -19,7 +20,7 @@ import kotlinx.coroutines.launch
  */
 class NoteListFragment : Fragment() {
 
-    private val adapter = NotesListAdapter()
+    private val adapter = NotesListAdapter { noteToDelete -> deleteNote(noteToDelete) }
     private var _binding: FragmentNoteListBinding? = null
 
     // This property is only valid between onCreateView and
@@ -62,5 +63,9 @@ class NoteListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun deleteNote(notes: Notes) {
+        viewModel.deleteNote(notes)
     }
 }
