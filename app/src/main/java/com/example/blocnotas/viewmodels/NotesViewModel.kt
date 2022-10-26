@@ -1,5 +1,6 @@
 package com.example.blocnotas.viewmodels
 
+import android.content.ClipData
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -44,6 +45,15 @@ class NotesViewModel(private val noteDao: NoteDao) : ViewModel() {
     private fun insertNote(notes: Notes) {
         viewModelScope.launch {
             noteDao.insert(notes)
+        }
+    }
+
+    /**
+     * Launching a new coroutine to delete an item in a non-blocking way
+     */
+    fun deleteNote(notes: Notes) {
+        viewModelScope.launch {
+            noteDao.delete(notes)
         }
     }
 

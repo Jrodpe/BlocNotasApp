@@ -3,13 +3,14 @@ package com.example.blocnotas.adapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ActionMenuView.OnMenuItemClickListener
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.blocnotas.database.Notes
 import com.example.blocnotas.databinding.NotesViewBinding
 
-class NotesListAdapter(/*private val onItemClicked: (Notes) -> Unit*/) :
+class NotesListAdapter(/*private val onItemClicked: (Notes) -> Unit,*/  val deleteItemClickListener: (Notes) -> Unit) :
     ListAdapter<Notes, NotesListAdapter.NotesViewHolder>(DiffCallBack) {
 
     companion object {
@@ -24,14 +25,17 @@ class NotesListAdapter(/*private val onItemClicked: (Notes) -> Unit*/) :
         }
     }
 
-    class NotesViewHolder(private var binding: NotesViewBinding) :
+    class NotesViewHolder(private var binding: NotesViewBinding, private val deleteItemClickListener: (Notes) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SimpleDataFormat")
         fun bind(notes: Notes) {
             binding.titulo.text = notes.noteTitle
             binding.cuerpo.text = notes.noteText
+            binding.deleteButton.setOnClickListener {deleteItemClickListener(notes)}
         }
     }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
         val viewHolder = NotesViewHolder(
@@ -39,12 +43,15 @@ class NotesListAdapter(/*private val onItemClicked: (Notes) -> Unit*/) :
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),
+            deleteItemClickListener
         )
         viewHolder.itemView.setOnClickListener {
             val position = viewHolder.adapterPosition
             //onItemClicked(getItem(position))
         }
+
+
         return viewHolder
     }
 
