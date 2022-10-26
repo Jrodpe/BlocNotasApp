@@ -1,10 +1,14 @@
 package com.example.blocnotas.viewmodels
 
-import android.content.ClipData
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
+import com.example.blocnotas.R
 import com.example.blocnotas.database.NoteDao
 import com.example.blocnotas.database.Notes
 import kotlinx.coroutines.flow.Flow
@@ -56,12 +60,6 @@ class NotesViewModel(private val noteDao: NoteDao) : ViewModel() {
             noteDao.delete(notes)
         }
     }
-
-    /*fun updateNote(notes: Notes){
-        viewModelScope.launch {
-            noteDao.update(notes)
-        }
-    }*/
 
     fun allNotes(): Flow<List<Notes>> = noteDao.getAll()
 

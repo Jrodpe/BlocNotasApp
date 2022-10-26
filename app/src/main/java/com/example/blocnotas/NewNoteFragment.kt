@@ -64,6 +64,8 @@ class NewNoteFragment : Fragment() {
             addNewNote()
         }
 
+        val id = arguments?.getString("noteId")
+
 
     }
 
