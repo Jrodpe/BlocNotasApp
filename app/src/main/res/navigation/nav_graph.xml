@@ -14,7 +14,7 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/NewNote"
-            app:popUpTo="@id/NewNote"/>
+            app:popUpTo="@id/NewNote" />
     </fragment>
     <fragment
         android:id="@+id/NewNote"
@@ -25,6 +25,6 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/NoteList"
-            app:popUpTo="@id/NoteList"/>
+            app:popUpTo="@id/NoteList" />
     </fragment>
 </navigation>

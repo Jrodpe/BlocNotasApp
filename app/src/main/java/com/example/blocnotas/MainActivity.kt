@@ -1,16 +1,11 @@
 package com.example.blocnotas
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.recyclerview.widget.RecyclerView
-import com.example.blocnotas.data.notasPrueba
 import com.example.blocnotas.databinding.ActivityMainBinding
-import com.example.blocnotas.databinding.FragmentNoteListBinding
-import javax.sql.DataSource
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         //Configuración de la flecha de la toolbar para que vuelva hacia atrás
-        binding.toolbar.setNavigationOnClickListener{navController.popBackStack()}
+        binding.toolbar.setNavigationOnClickListener { navController.popBackStack() }
 
     }
 }

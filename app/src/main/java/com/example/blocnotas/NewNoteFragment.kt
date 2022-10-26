@@ -1,19 +1,16 @@
 package com.example.blocnotas
 
-import android.content.ClipData
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
 import com.example.blocnotas.database.Notes
 import com.example.blocnotas.databinding.FragmentNewNoteBinding
 import com.example.blocnotas.viewmodels.NotesViewModel
 import com.example.blocnotas.viewmodels.NotesViewModelFactory
-import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -21,10 +18,11 @@ import kotlinx.coroutines.launch
 class NewNoteFragment : Fragment() {
 
     private var _binding: FragmentNewNoteBinding? = null
-    private val viewModel: NotesViewModel by activityViewModels{
-    NotesViewModelFactory(
-    (activity?.application as NotesApplication).database.noteDao())
-}
+    private val viewModel: NotesViewModel by activityViewModels {
+        NotesViewModelFactory(
+            (activity?.application as NotesApplication).database.noteDao()
+        )
+    }
     lateinit var note: Notes
 
     // This property is only valid between onCreateView and
@@ -44,14 +42,15 @@ class NewNoteFragment : Fragment() {
     /**
      * Returns true if the EditTexts are not empty
      */
-    private fun isEntryValid(): Boolean{
+    private fun isEntryValid(): Boolean {
         return viewModel.isEntryValid(
             binding.noteTitle.text.toString(),
-            binding.noteText.text.toString())
+            binding.noteText.text.toString()
+        )
     }
 
-    private fun addNewNote(){
-        if(isEntryValid()){
+    private fun addNewNote() {
+        if (isEntryValid()) {
             viewModel.addNewNote(
                 binding.noteTitle.text.toString(),
                 binding.noteText.text.toString()
@@ -66,7 +65,6 @@ class NewNoteFragment : Fragment() {
         binding.sendNoteButton.setOnClickListener {
             addNewNote()
         }
-
 
 
     }

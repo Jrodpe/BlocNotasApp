@@ -49,8 +49,8 @@ class NotesViewModel(private val noteDao: NoteDao) : ViewModel() {
 
     fun allNotes(): Flow<List<Notes>> = noteDao.getAll()
 
-    fun isEntryValid(noteTitle: String, noteText: String): Boolean{
-        if (noteTitle.isBlank() || noteText.isBlank()){
+    fun isEntryValid(noteTitle: String, noteText: String): Boolean {
+        if (noteTitle.isBlank() || noteText.isBlank()) {
             return false
         }
         return true

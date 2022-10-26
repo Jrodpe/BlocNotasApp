@@ -1,19 +1,14 @@
 package com.example.blocnotas
 
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Note
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.example.blocnotas.adapter.NotesListAdapter
-import com.example.blocnotas.data.notasPrueba
-import com.example.blocnotas.database.Notes
 import com.example.blocnotas.databinding.FragmentNoteListBinding
 import com.example.blocnotas.viewmodels.NotesViewModel
 import com.example.blocnotas.viewmodels.NotesViewModelFactory
