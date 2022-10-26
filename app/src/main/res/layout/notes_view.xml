@@ -20,7 +20,7 @@
             android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/editButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.24000001"
@@ -35,10 +35,32 @@
             android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/deleteButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/titulo"
             tools:text="Texto de la nota" />
+
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="#FFFFFFFF"
+            app:srcCompat="@drawable/ic_outline_delete_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteX="349dp"
+            tools:layout_editor_absoluteY="28dp" />
+
+        <ImageButton
+            android:id="@+id/editButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="#FFFFFFFF"
+            app:srcCompat="@drawable/ic_outline_edit_note_24"
+            app:layout_constraintBottom_toTopOf="@id/deleteButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteX="349dp"
+            tools:layout_editor_absoluteY="28dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
