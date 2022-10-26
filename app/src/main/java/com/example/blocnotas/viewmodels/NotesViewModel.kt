@@ -57,6 +57,12 @@ class NotesViewModel(private val noteDao: NoteDao) : ViewModel() {
         }
     }
 
+    /*fun updateNote(notes: Notes){
+        viewModelScope.launch {
+            noteDao.update(notes)
+        }
+    }*/
+
     fun allNotes(): Flow<List<Notes>> = noteDao.getAll()
 
     fun isEntryValid(noteTitle: String, noteText: String): Boolean {

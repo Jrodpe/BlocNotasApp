@@ -1,6 +1,7 @@
 package com.example.blocnotas
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +21,9 @@ import kotlinx.coroutines.launch
  */
 class NoteListFragment : Fragment() {
 
-    private val adapter = NotesListAdapter { noteToDelete -> deleteNote(noteToDelete) }
+    private val adapter = NotesListAdapter (deleteItemClickListener = { noteToDelete -> deleteNote(noteToDelete)},
+                                            updateItemClickListener = { noteToUptdate -> updateNote(noteToUptdate)})
+
     private var _binding: FragmentNoteListBinding? = null
 
     // This property is only valid between onCreateView and
@@ -67,5 +70,9 @@ class NoteListFragment : Fragment() {
 
     private fun deleteNote(notes: Notes) {
         viewModel.deleteNote(notes)
+    }
+
+    private fun updateNote(notes: Notes){
+        //viewModel.updateNote(notes)
     }
 }
