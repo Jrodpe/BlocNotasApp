@@ -7,7 +7,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.blocnotas.adapter.NotesAdapter
 import com.example.blocnotas.data.notasPrueba
 import com.example.blocnotas.databinding.ActivityMainBinding
 import com.example.blocnotas.databinding.FragmentNoteListBinding
