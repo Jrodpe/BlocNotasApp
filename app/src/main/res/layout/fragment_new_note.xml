@@ -40,13 +40,16 @@
 
     <Button
         android:id="@+id/send_note_button"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add"
+        android:drawableLeft="@drawable/ic_baseline_playlist_add_check_24"
         android:editable="true"
+        android:text="@string/add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/note_text_label" />
+        app:layout_constraintTop_toBottomOf="@id/note_text_label"
+        tools:ignore="Deprecated" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
