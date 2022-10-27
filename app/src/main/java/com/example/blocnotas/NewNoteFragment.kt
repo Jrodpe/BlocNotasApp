@@ -1,15 +1,19 @@
 package com.example.blocnotas
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.blocnotas.databinding.FragmentNewNoteBinding
 import com.example.blocnotas.viewmodels.NotesViewModel
 import com.example.blocnotas.viewmodels.NotesViewModelFactory
+import com.example.blocnotas.database.Notes
+import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -60,18 +64,25 @@ class NewNoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.sendNoteButton.setOnClickListener {
-            addNewNote()
-        }
 
-        val id = arguments?.getString("noteId")
-        val title = arguments?.getString("noteTitle")
-        val text = arguments?.getString("noteText")
+        val id = arguments?.getString(ARG_NOTE_ID)
+        val title = arguments?.getString(ARG_NOTE_TITLE)
+        val text = arguments?.getString(ARG_NOTE_TEXT)
 
         if (id != null && title != null && text != null) {
-            binding.sendNoteButton.text = "Editar Nota"
+            binding.sendNoteButton.text = getString(R.string.edit_note_button)
             binding.noteTitle.setText(title)
             binding.noteText.setText(text)
+            (requireActivity() as MainActivity).supportActionBar?.title = getString(R.string.edit_note_button)
+            binding.sendNoteButton.setOnClickListener {
+                viewModel.editNote(id.toInt(), binding.noteTitle.text.toString(), binding.noteText.text.toString())
+                findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            }
+        }
+        else {
+            binding.sendNoteButton.setOnClickListener {
+                addNewNote()
+            }
         }
 
     }
@@ -79,6 +90,12 @@ class NewNoteFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val ARG_NOTE_ID = "noteId"
+        const val ARG_NOTE_TITLE = "noteTitle"
+        const val ARG_NOTE_TEXT = "noteText"
     }
 
 }

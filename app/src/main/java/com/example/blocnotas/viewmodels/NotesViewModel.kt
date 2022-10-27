@@ -38,12 +38,31 @@ class NotesViewModel(private val noteDao: NoteDao) : ViewModel() {
 
     }
 
+    fun getNote(noteId: Int, noteTitle: String, noteText: String): Notes {
+        return Notes(
+            id = noteId,
+            noteTitle = noteTitle,
+            noteText = noteText
+        )
+    }
+
     /**
      * Launching a new coroutine to insert an item in a non-blocking way
      */
     private fun insertNote(notes: Notes) {
         viewModelScope.launch {
             noteDao.insert(notes)
+        }
+    }
+
+    fun editNote(noteId: Int, noteTitle: String, noteText: String){
+        val note = getNote(noteId, noteTitle, noteText)
+        updateNote(note)
+    }
+
+    fun updateNote(notes: Notes){
+        viewModelScope.launch{
+            noteDao.update(notes)
         }
     }
 

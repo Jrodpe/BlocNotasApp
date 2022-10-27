@@ -1,7 +1,6 @@
 package com.example.blocnotas
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,10 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.coroutineScope
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import com.example.blocnotas.NewNoteFragment.Companion.ARG_NOTE_ID
+import com.example.blocnotas.NewNoteFragment.Companion.ARG_NOTE_TEXT
+import com.example.blocnotas.NewNoteFragment.Companion.ARG_NOTE_TITLE
 import com.example.blocnotas.adapter.NotesListAdapter
 import com.example.blocnotas.database.Notes
 import com.example.blocnotas.databinding.FragmentNoteListBinding
@@ -75,9 +76,9 @@ class NoteListFragment : Fragment() {
     }
 
     private fun updateNote(notes: Notes){
-        val bundle = bundleOf("noteId" to notes.id.toString(),
-                                        "noteTitle" to notes.noteTitle,
-                                        "noteText" to notes.noteText)
+        val bundle = bundleOf(ARG_NOTE_ID to notes.id.toString(),
+                                            ARG_NOTE_TITLE to notes.noteTitle,
+                                            ARG_NOTE_TEXT to notes.noteText)
         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
     }
 }
