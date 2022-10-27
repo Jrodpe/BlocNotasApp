@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
+import com.example.blocnotas.NewNoteFragment.Companion.ARG_NOTE_ID
+import com.example.blocnotas.NewNoteFragment.Companion.ARG_NOTE_TEXT
+import com.example.blocnotas.NewNoteFragment.Companion.ARG_NOTE_TITLE
 import com.example.blocnotas.adapter.NotesListAdapter
 import com.example.blocnotas.database.Notes
 import com.example.blocnotas.databinding.FragmentNoteListBinding
@@ -20,7 +24,9 @@ import kotlinx.coroutines.launch
  */
 class NoteListFragment : Fragment() {
 
-    private val adapter = NotesListAdapter { noteToDelete -> deleteNote(noteToDelete) }
+    private val adapter = NotesListAdapter (deleteItemClickListener = { noteToDelete -> deleteNote(noteToDelete)},
+                                            updateItemClickListener = { noteToUptdate -> updateNote(noteToUptdate)})
+
     private var _binding: FragmentNoteListBinding? = null
 
     // This property is only valid between onCreateView and
@@ -67,5 +73,12 @@ class NoteListFragment : Fragment() {
 
     private fun deleteNote(notes: Notes) {
         viewModel.deleteNote(notes)
+    }
+
+    private fun updateNote(notes: Notes){
+        val bundle = bundleOf(ARG_NOTE_ID to notes.id.toString(),
+                                            ARG_NOTE_TITLE to notes.noteTitle,
+                                            ARG_NOTE_TEXT to notes.noteText)
+        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
     }
 }

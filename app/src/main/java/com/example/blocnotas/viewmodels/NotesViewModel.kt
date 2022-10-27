@@ -1,10 +1,14 @@
 package com.example.blocnotas.viewmodels
 
-import android.content.ClipData
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
+import com.example.blocnotas.R
 import com.example.blocnotas.database.NoteDao
 import com.example.blocnotas.database.Notes
 import kotlinx.coroutines.flow.Flow
@@ -13,11 +17,6 @@ import kotlinx.coroutines.launch
 
 class NotesViewModel(private val noteDao: NoteDao) : ViewModel() {
 
-    fun createNote(noteTitle: String, noteText: String) {
-        Log.d("newNote", "noteTitle= $noteTitle noteText= $noteText")
-    }
-
-    //TODO INSERTAR LA NOTA EN LA BASE DE DATOS
     /**
      * Inserts the new Item into database.
      */
@@ -39,12 +38,31 @@ class NotesViewModel(private val noteDao: NoteDao) : ViewModel() {
 
     }
 
+    fun getNote(noteId: Int, noteTitle: String, noteText: String): Notes {
+        return Notes(
+            id = noteId,
+            noteTitle = noteTitle,
+            noteText = noteText
+        )
+    }
+
     /**
      * Launching a new coroutine to insert an item in a non-blocking way
      */
     private fun insertNote(notes: Notes) {
         viewModelScope.launch {
             noteDao.insert(notes)
+        }
+    }
+
+    fun editNote(noteId: Int, noteTitle: String, noteText: String){
+        val note = getNote(noteId, noteTitle, noteText)
+        updateNote(note)
+    }
+
+    fun updateNote(notes: Notes){
+        viewModelScope.launch{
+            noteDao.update(notes)
         }
     }
 

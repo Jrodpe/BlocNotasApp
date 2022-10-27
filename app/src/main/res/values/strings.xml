@@ -4,12 +4,13 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Bloc de notas</string>
     <string name="second_fragment_label">Nueva nota</string>
+    <string name="edit_note_button">Editar Nota</string>
     <string name="next">Next</string>
     <string name="add">Crear Nota</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="item_name_req" />
-    <string name="set_title">Set Title</string>
-    <string name="write_your_note_here">Write your note here</string>
+    <string name="set_title">Título de la Nota</string>
+    <string name="write_your_note_here">Escribe aquí tu nota</string>
 </resources>

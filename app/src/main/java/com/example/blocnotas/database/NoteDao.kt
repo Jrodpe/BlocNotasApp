@@ -14,10 +14,7 @@ interface NoteDao {
     @Delete
     suspend fun delete(notes: Notes)
 
-    /*@Update
+    @Update
     suspend fun update(notes: Notes)
 
-
-
-     */
 }
