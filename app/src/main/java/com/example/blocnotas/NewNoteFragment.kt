@@ -65,7 +65,14 @@ class NewNoteFragment : Fragment() {
         }
 
         val id = arguments?.getString("noteId")
+        val title = arguments?.getString("noteTitle")
+        val text = arguments?.getString("noteText")
 
+        if (id != null && title != null && text != null) {
+            binding.sendNoteButton.text = "Editar Nota"
+            binding.noteTitle.setText(title)
+            binding.noteText.setText(text)
+        }
 
     }
 

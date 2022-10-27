@@ -75,8 +75,9 @@ class NoteListFragment : Fragment() {
     }
 
     private fun updateNote(notes: Notes){
-        val bundle = bundleOf("noteId" to notes.id.toString())
+        val bundle = bundleOf("noteId" to notes.id.toString(),
+                                        "noteTitle" to notes.noteTitle,
+                                        "noteText" to notes.noteText)
         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
-
     }
 }

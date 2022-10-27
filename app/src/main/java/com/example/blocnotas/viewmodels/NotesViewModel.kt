@@ -17,11 +17,6 @@ import kotlinx.coroutines.launch
 
 class NotesViewModel(private val noteDao: NoteDao) : ViewModel() {
 
-    fun createNote(noteTitle: String, noteText: String) {
-        Log.d("newNote", "noteTitle= $noteTitle noteText= $noteText")
-    }
-
-    //TODO INSERTAR LA NOTA EN LA BASE DE DATOS
     /**
      * Inserts the new Item into database.
      */

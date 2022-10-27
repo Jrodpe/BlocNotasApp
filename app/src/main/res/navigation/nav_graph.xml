@@ -16,7 +16,17 @@
             app:destination="@id/NewNote"
             app:popUpTo="@id/NewNote" >
             <argument
-                android:name="myArg"
+                android:name="idArg"
+                app:argType="string"
+                app:nullable="true"/>
+
+            <argument
+                android:name="titleArg"
+                app:argType="string"
+                app:nullable="true"/>
+
+            <argument
+                android:name="textArg"
                 app:argType="string"
                 app:nullable="true"/>
         </action>
