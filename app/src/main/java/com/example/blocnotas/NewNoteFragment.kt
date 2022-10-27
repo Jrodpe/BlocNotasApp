@@ -1,19 +1,15 @@
 package com.example.blocnotas
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.blocnotas.databinding.FragmentNewNoteBinding
 import com.example.blocnotas.viewmodels.NotesViewModel
 import com.example.blocnotas.viewmodels.NotesViewModelFactory
-import com.example.blocnotas.database.Notes
-import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -73,13 +69,17 @@ class NewNoteFragment : Fragment() {
             binding.sendNoteButton.text = getString(R.string.edit_note_button)
             binding.noteTitle.setText(title)
             binding.noteText.setText(text)
-            (requireActivity() as MainActivity).supportActionBar?.title = getString(R.string.edit_note_button)
+            (requireActivity() as MainActivity).supportActionBar?.title =
+                getString(R.string.edit_note_button)
             binding.sendNoteButton.setOnClickListener {
-                viewModel.editNote(id.toInt(), binding.noteTitle.text.toString(), binding.noteText.text.toString())
+                viewModel.editNote(
+                    id.toInt(),
+                    binding.noteTitle.text.toString(),
+                    binding.noteText.text.toString()
+                )
                 findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
             }
-        }
-        else {
+        } else {
             binding.sendNoteButton.setOnClickListener {
                 addNewNote()
             }

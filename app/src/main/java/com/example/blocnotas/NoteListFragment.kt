@@ -24,8 +24,9 @@ import kotlinx.coroutines.launch
  */
 class NoteListFragment : Fragment() {
 
-    private val adapter = NotesListAdapter (deleteItemClickListener = { noteToDelete -> deleteNote(noteToDelete)},
-                                            updateItemClickListener = { noteToUptdate -> updateNote(noteToUptdate)})
+    private val adapter =
+        NotesListAdapter(deleteItemClickListener = { noteToDelete -> deleteNote(noteToDelete) },
+            updateItemClickListener = { noteToUptdate -> updateNote(noteToUptdate) })
 
     private var _binding: FragmentNoteListBinding? = null
 
@@ -75,10 +76,12 @@ class NoteListFragment : Fragment() {
         viewModel.deleteNote(notes)
     }
 
-    private fun updateNote(notes: Notes){
-        val bundle = bundleOf(ARG_NOTE_ID to notes.id.toString(),
-                                            ARG_NOTE_TITLE to notes.noteTitle,
-                                            ARG_NOTE_TEXT to notes.noteText)
+    private fun updateNote(notes: Notes) {
+        val bundle = bundleOf(
+            ARG_NOTE_ID to notes.id.toString(),
+            ARG_NOTE_TITLE to notes.noteTitle,
+            ARG_NOTE_TEXT to notes.noteText
+        )
         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
     }
 }

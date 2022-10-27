@@ -4,11 +4,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.viewModelFactory
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
-import androidx.navigation.fragment.findNavController
-import com.example.blocnotas.R
 import com.example.blocnotas.database.NoteDao
 import com.example.blocnotas.database.Notes
 import kotlinx.coroutines.flow.Flow
@@ -27,7 +22,7 @@ class NotesViewModel(private val noteDao: NoteDao) : ViewModel() {
     }
 
     /**
-     * Returns an instance of the [Item] entity class with the item info entered by the user.
+     * Returns an instance of the Item entity class with the item info entered by the user.
      * This will be used to add a new entry to the Inventory database.
      */
     private fun getNewNoteEntry(noteTitle: String, noteText: String): Notes {
@@ -55,13 +50,13 @@ class NotesViewModel(private val noteDao: NoteDao) : ViewModel() {
         }
     }
 
-    fun editNote(noteId: Int, noteTitle: String, noteText: String){
+    fun editNote(noteId: Int, noteTitle: String, noteText: String) {
         val note = getNote(noteId, noteTitle, noteText)
         updateNote(note)
     }
 
-    fun updateNote(notes: Notes){
-        viewModelScope.launch{
+    fun updateNote(notes: Notes) {
+        viewModelScope.launch {
             noteDao.update(notes)
         }
     }

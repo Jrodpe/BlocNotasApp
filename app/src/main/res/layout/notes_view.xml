@@ -45,20 +45,21 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="#FFFFFFFF"
-            app:srcCompat="@drawable/ic_outline_delete_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_outline_delete_24"
             tools:layout_editor_absoluteX="349dp"
-            tools:layout_editor_absoluteY="28dp" />
+            tools:layout_editor_absoluteY="28dp"
+            android:contentDescription="Delete Button" />
 
         <ImageButton
             android:id="@+id/editButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="#FFFFFFFF"
-            app:srcCompat="@drawable/ic_outline_edit_note_24"
             app:layout_constraintBottom_toTopOf="@id/deleteButton"
             app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_outline_edit_note_24"
             tools:layout_editor_absoluteX="349dp"
             tools:layout_editor_absoluteY="28dp" />
 
